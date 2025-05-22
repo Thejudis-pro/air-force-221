@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -7,6 +8,7 @@ import Footer from '@/components/Footer';
 import FeaturedProduct from '@/components/FeaturedProduct';
 import TestimonialSection from '@/components/TestimonialSection';
 import InstagramSection from '@/components/InstagramSection';
+
 const Index = () => {
   return <>
       <Header />
@@ -39,18 +41,27 @@ const Index = () => {
               </Link>
             </motion.div>
             
-            <motion.div initial={{
-            opacity: 0,
-            x: 30
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.3
-          }} className="hidden md:block">
-              <div className="relative">
-                <img src="/lovable-uploads/7ab42e81-b240-43c1-83bc-01e450db79b4.png" alt="Nike Air Force 1" className="w-full max-h-[500px] transform rotate-[-15deg] translate-y-[60px] hover:rotate-[-5deg] transition-transform duration-500 object-scale-down\n" />
+            <motion.div 
+              initial={{
+                opacity: 0,
+                x: 30
+              }} 
+              animate={{
+                opacity: 1,
+                x: 0
+              }} 
+              transition={{
+                duration: 0.8,
+                delay: 0.3
+              }} 
+              className="hidden md:block"
+            >
+              <div className="relative flex justify-center items-center">
+                <img 
+                  src="/lovable-uploads/7ab42e81-b240-43c1-83bc-01e450db79b4.png" 
+                  alt="Nike Air Force 1" 
+                  className="w-full max-w-md transform rotate-[-15deg] hover:rotate-[-5deg] transition-transform duration-500 object-contain" 
+                />
               </div>
             </motion.div>
           </div>
