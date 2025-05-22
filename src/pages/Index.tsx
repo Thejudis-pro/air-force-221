@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -12,18 +13,18 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center overflow-hidden bg-black">
+      <section className="relative h-auto min-h-[80vh] flex items-center overflow-hidden bg-black">
         <div className="container-custom relative z-10 text-white">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8
-          }}>
+              opacity: 0,
+              y: 30
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.8
+            }}>
               <h1 className="hero-text mb-6">
                 L'INCONTOURNABLE.<br />
                 <span className="text-gold">REVISITÉ.</span>
@@ -39,18 +40,39 @@ const Index = () => {
               </Link>
             </motion.div>
             
-            <motion.div initial={{
-            opacity: 0,
-            x: 30
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.3
-          }} className="hidden md:flex justify-center items-center">
-              <div className="relative flex justify-center items-center mt-12">
-                <img alt="Nike Air Force 1" src="/lovable-uploads/03983684-4b14-4dfb-a925-37a1aadb29e3.jpg" className="w-full max-h-[450px] transform rotate-[-15deg] translate-y-[60px] hover:rotate-[-5deg] transition-transform duration-490 \\\\n" />
+            {/* Affichage de l'image sur TOUTES les tailles d'écran */}
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: 30
+              }}
+              animate={{
+                opacity: 1,
+                x: 0
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.3
+              }}
+              className="flex justify-center items-center mt-8 md:mt-12"
+            >
+              <div className="relative flex justify-center items-center w-full">
+                <img
+                  alt="Nike Air Force 1"
+                  src="/lovable-uploads/03983684-4b14-4dfb-a925-37a1aadb29e3.jpg"
+                  className="
+                    w-3/4 xs:w-2/3 sm:w-1/2 md:w-full
+                    max-w-[340px] md:max-w-[450px]
+                    mx-auto
+                    rounded-lg
+                    object-cover
+                    transition-transform duration-500
+                    rotate-[-10deg] md:rotate-[-15deg]
+                    translate-y-4 md:translate-y-[60px]
+                    hover:rotate-[-5deg]
+                  "
+                  style={{ boxShadow: '0 6px 32px 1px rgba(0,0,0,0.11)' }}
+                />
               </div>
             </motion.div>
           </div>
