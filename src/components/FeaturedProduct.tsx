@@ -15,7 +15,7 @@ const FeaturedProduct = ({ product, index }: FeaturedProductProps) => {
   
   return (
     <div 
-      className={`flex flex-col ${isReverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 my-20`}
+      className={`flex flex-col ${isReverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-4 sm:gap-6 md:gap-8 my-12 md:my-20 px-4 md:px-0`}
     >
       <div className="w-full md:w-1/2 overflow-hidden rounded-lg">
         <motion.div
@@ -32,18 +32,18 @@ const FeaturedProduct = ({ product, index }: FeaturedProductProps) => {
         </motion.div>
       </div>
       
-      <div className="w-full md:w-1/2">
+      <div className="w-full md:w-1/2 mt-6 md:mt-0">
         <motion.div
           initial={{ opacity: 0, x: isReverse ? -30 : 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-2">{product.name}</h3>
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{product.name}</h3>
           {product.slogan && (
-            <p className="text-lg text-gray-600 mb-3 italic">{product.slogan}</p>
+            <p className="text-base sm:text-lg text-gray-600 mb-3 italic">{product.slogan}</p>
           )}
-          <p className="text-xl font-semibold text-gold mb-4">{product.price} FCFA</p>
-          <p className="text-gray-600 mb-4">
+          <p className="text-lg sm:text-xl font-semibold text-gold mb-4">{product.price} FCFA</p>
+          <p className="text-sm sm:text-base text-gray-600 mb-4">
             {product.description?.substring(0, 150)}...
           </p>
           
@@ -52,8 +52,8 @@ const FeaturedProduct = ({ product, index }: FeaturedProductProps) => {
               <ul className="space-y-2">
                 {product.highlights.slice(0, 2).map((highlight, i) => (
                   <li key={i} className="flex items-start">
-                    <Check className="h-5 w-5 text-gold mr-2 flex-shrink-0 mt-0.5" />
-                    <span>{highlight}</span>
+                    <Check className="h-4 w-4 sm:h-5 sm:w-5 text-gold mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base">{highlight}</span>
                   </li>
                 ))}
               </ul>
@@ -62,7 +62,7 @@ const FeaturedProduct = ({ product, index }: FeaturedProductProps) => {
           
           <Link 
             to={`/produits/${product.slug}`} 
-            className="btn btn-primary px-6 py-3"
+            className="btn btn-primary px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base"
           >
             Voir le produit
           </Link>
