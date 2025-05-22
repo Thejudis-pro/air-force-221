@@ -54,13 +54,13 @@ const Index = () => {
                 duration: 0.8,
                 delay: 0.3
               }} 
-              className="hidden md:block"
+              className="hidden md:flex justify-center items-center"
             >
-              <div className="relative flex justify-center items-center">
+              <div className="relative flex justify-center items-center mt-12">
                 <img 
                   src="/lovable-uploads/7ab42e81-b240-43c1-83bc-01e450db79b4.png" 
                   alt="Nike Air Force 1" 
-                  className="w-full max-w-md transform rotate-[-15deg] hover:rotate-[-5deg] transition-transform duration-500 object-contain" 
+                  className="w-full max-w-md object-contain" 
                 />
               </div>
             </motion.div>
