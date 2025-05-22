@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -7,6 +6,7 @@ import Footer from '@/components/Footer';
 import { ArrowLeft, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { type CustomerInfo, type OrderData } from '@/utils/emailService';
 
 interface OrderItem {
   product: {
@@ -20,25 +20,13 @@ interface OrderItem {
   size: number;
 }
 
-interface OrderData {
-  orderNumber: string;
-  customer: {
-    fullName: string;
-    email: string;
-    phone: string;
-    address: string;
-    city: string;
-    postalCode: string;
-    country: string;
-    notes?: string;
-  };
-  items: OrderItem[];
-  total: number;
+// Extend the OrderData interface if needed for any additional properties used in ThankYou.tsx
+interface ExtendedOrderData extends OrderData {
   date: string;
 }
 
 const ThankYou = () => {
-  const [orderData, setOrderData] = useState<OrderData | null>(null);
+  const [orderData, setOrderData] = useState<ExtendedOrderData | null>(null);
   
   useEffect(() => {
     // Récupérer les données de commande du localStorage

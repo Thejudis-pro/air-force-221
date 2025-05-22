@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import Header from '@/components/Header';
@@ -15,7 +14,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { sendOrderConfirmationEmail } from '@/utils/emailService';
+import { sendOrderConfirmationEmail, type CustomerInfo } from '@/utils/emailService';
 
 // Schéma de validation pour le formulaire client
 const customerFormSchema = z.object({
@@ -85,7 +84,7 @@ const Cart = () => {
       // Créer les données de la commande
       const orderData = {
         orderNumber,
-        customer: data,
+        customer: data as CustomerInfo, // Use type assertion here to ensure all required fields are present
         items: cartItems,
         total: totalPrice,
         date: new Date().toISOString(),
@@ -94,7 +93,7 @@ const Cart = () => {
       // Envoyer l'email au propriétaire
       const emailSent = await sendOrderConfirmationEmail({
         orderNumber,
-        customer: data,
+        customer: data as CustomerInfo, // Use type assertion here as well
         items: cartItems,
         total: totalPrice
       });

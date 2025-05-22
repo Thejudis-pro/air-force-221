@@ -104,3 +104,6 @@ const formatOrderItems = (items: CartItem[]): string => {
     `${item.product.name} - Taille ${item.size} - Qté: ${item.quantity} - ${(item.product.price * item.quantity).toFixed(2)} €`
   ).join(', ');
 };
+
+// Export the CustomerInfo type so it can be used in other files
+export type { CustomerInfo, OrderData };
