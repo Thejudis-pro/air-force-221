@@ -1,8 +1,6 @@
+// EmailJS implementation using the provided credentials
 
-// Cette implémentation est un exemple utilisant le service EmailJS
-// Pour une utilisation réelle, vous devrez créer un compte sur emailjs.com
-// et obtenir vos propres identifiants
-
+import emailjs from '@emailjs/browser';
 import { CartItem } from "@/contexts/CartContext";
 
 interface CustomerInfo {
@@ -23,6 +21,11 @@ interface OrderData {
   total: number;
 }
 
+// EmailJS credentials
+const EMAIL_SERVICE_ID = "service_8qbo8gk";
+const EMAIL_TEMPLATE_ID = "template_cvz40cl";
+const EMAIL_PUBLIC_KEY = "RRGU2JfdURI9HROs3";
+
 // Adresse email du propriétaire du site
 const OWNER_EMAIL = "judismetognon2@gmail.com";
 
@@ -33,41 +36,30 @@ const OWNER_EMAIL = "judismetognon2@gmail.com";
  * @returns Une promesse qui se résout lorsque l'email est envoyé
  */
 export const sendOrderConfirmationEmail = async (orderData: OrderData): Promise<boolean> => {
-  // Dans une implémentation réelle avec EmailJS, vous utiliseriez:
-  // 
-  // import emailjs from '@emailjs/browser';
-  // 
-  // const response = await emailjs.send(
-  //   "YOUR_SERVICE_ID", // e.g., "service_abc123"
-  //   "YOUR_TEMPLATE_ID", // e.g., "template_xyz456"
-  //   {
-  //     order_number: orderData.orderNumber,
-  //     customer_name: orderData.customer.fullName,
-  //     customer_email: orderData.customer.email,
-  //     customer_phone: orderData.customer.phone,
-  //     customer_address: `${orderData.customer.address}, ${orderData.customer.postalCode} ${orderData.customer.city}, ${orderData.customer.country}`,
-  //     customer_notes: orderData.customer.notes || "Aucune note",
-  //     order_items: formatOrderItems(orderData.items),
-  //     order_total: orderData.total.toFixed(2) + " €",
-  //   },
-  //   "YOUR_USER_ID" // e.g., "user_aaa999"
-  // );
-  // 
-  // return response.status === 200;
-  
-  // Pour le moment, nous simulons l'envoi d'email avec un délai
-  return new Promise((resolve) => {
-    console.log("Envoi d'email avec les données suivantes:", {
-      to: OWNER_EMAIL,
-      subject: `Nouvelle commande reçue – n° ${orderData.orderNumber}`,
-      body: formatEmailBody(orderData),
-    });
+  try {
+    const response = await emailjs.send(
+      EMAIL_SERVICE_ID,
+      EMAIL_TEMPLATE_ID,
+      {
+        order_number: orderData.orderNumber,
+        customer_name: orderData.customer.fullName,
+        customer_email: orderData.customer.email,
+        customer_phone: orderData.customer.phone,
+        customer_address: `${orderData.customer.address}, ${orderData.customer.postalCode} ${orderData.customer.city}, ${orderData.customer.country}`,
+        customer_notes: orderData.customer.notes || "Aucune note",
+        order_items: formatOrderItems(orderData.items),
+        order_total: orderData.total.toFixed(2) + " €",
+        recipient: OWNER_EMAIL
+      },
+      EMAIL_PUBLIC_KEY
+    );
     
-    // Simuler un délai d'envoi d'email
-    setTimeout(() => {
-      resolve(true);
-    }, 1500);
-  });
+    console.log("Email envoyé avec succès:", response);
+    return response.status === 200;
+  } catch (error) {
+    console.error("Erreur lors de l'envoi de l'email:", error);
+    return false;
+  }
 };
 
 /**
