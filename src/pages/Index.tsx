@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -40,7 +39,7 @@ const Index = () => {
               </Link>
             </motion.div>
             
-            {/* Affichage de l'image sur TOUTES les tailles d'écran */}
+            {/* Affichage de l'image améliorée pour mobile */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -56,22 +55,34 @@ const Index = () => {
               }}
               className="flex justify-center items-center mt-8 md:mt-12"
             >
-              <div className="relative flex justify-center items-center w-full">
+              <div className="relative w-full flex justify-center items-center">
+                {/* Fond dégradé sous l'image pour la faire ressortir */}
+                <div
+                  className="
+                    absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                    w-[92vw] h-[200px] xs:w-[95vw] xs:h-[230px] sm:w-[380px] sm:h-[240px] md:hidden
+                    rounded-full
+                    bg-gradient-to-b from-gold/30 via-white/40 to-transparent
+                    blur-md
+                    z-0
+                  "
+                />
                 <img
                   alt="Nike Air Force 1"
                   src="/lovable-uploads/03983684-4b14-4dfb-a925-37a1aadb29e3.jpg"
                   className="
-                    w-3/4 xs:w-2/3 sm:w-1/2 md:w-full
-                    max-w-[340px] md:max-w-[450px]
+                    relative z-10
+                    w-[92vw] max-w-[390px] xs:w-[95vw] xs:max-w-[420px] sm:w-[390px] sm:max-w-[440px] md:w-full md:max-w-[450px]
                     mx-auto
                     rounded-lg
                     object-cover
                     transition-transform duration-500
-                    rotate-[-10deg] md:rotate-[-15deg]
-                    translate-y-4 md:translate-y-[60px]
-                    hover:rotate-[-5deg]
+                    rotate-[-5deg] md:rotate-[-15deg]
+                    translate-y-2 md:translate-y-[60px]
+                    hover:rotate-[-2deg]
+                    shadow-lg
                   "
-                  style={{ boxShadow: '0 6px 32px 1px rgba(0,0,0,0.11)' }}
+                  style={{ boxShadow: '0 8px 44px 3px rgba(0,0,0,0.13)' }}
                 />
               </div>
             </motion.div>
