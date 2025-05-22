@@ -31,7 +31,7 @@ const Header = () => {
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-white/90 shadow-sm sticky-nav' : 'py-5 bg-transparent'}`}>
       <div className="container-custom flex justify-between items-center">
         <Link to="/" className="text-xl md:text-2xl font-montserrat font-bold tracking-tight">
-          AIR <span className="text-gold">FORCE</span> 1 STORE
+          AIR <span className="text-gold">FORCE</span> 221
         </Link>
         
         {/* Desktop Navigation */}

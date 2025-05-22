@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div>
-            <h3 className="text-xl font-bold mb-4">AIR<span className="text-gold">FORCE</span>ONE</h3>
+            <h3 className="text-xl font-bold mb-4">AIR<span className="text-gold">FORCE</span>221</h3>
             <p className="text-gray-400 mb-6">
               Sneakers premium et customs pour les passionnés de style urbain.
             </p>
@@ -45,9 +45,9 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-4">Contact</h4>
             <div className="space-y-3">
-              <a href="mailto:info@airforceone.com" className="flex items-center text-gray-400 hover:text-gold transition-colors">
+              <a href="mailto:info@airforce221.com" className="flex items-center text-gray-400 hover:text-gold transition-colors">
                 <Mail className="h-5 w-5 mr-2" />
-                info@airforceone.com
+                info@airforce221.com
               </a>
               <a href="tel:+33612345678" className="flex items-center text-gray-400 hover:text-gold transition-colors">
                 <Phone className="h-5 w-5 mr-2" />
@@ -60,7 +60,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm mb-4 md:mb-0">
-              &copy; {currentYear} AIRFORCEONE - Tous droits réservés
+              &copy; {currentYear} AIRFORCE221 - Tous droits réservés
             </p>
             <div className="flex space-x-6">
               <Link to="/cgv" className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
