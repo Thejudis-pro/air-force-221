@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -7,12 +8,17 @@ import Footer from '@/components/Footer';
 import FeaturedProduct from '@/components/FeaturedProduct';
 import TestimonialSection from '@/components/TestimonialSection';
 import InstagramSection from '@/components/InstagramSection';
+
 const Index = () => {
   return <>
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-auto min-h-[80vh] flex items-center overflow-hidden bg-black">
+      <section className="relative h-auto min-h-[80vh] flex items-center overflow-hidden bg-black 
+        pt-8 pb-8
+        xs:pt-10 xs:pb-10
+        sm:pt-14 sm:pb-12
+        ">
         <div className="container-custom relative z-10 text-white">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div initial={{
@@ -39,7 +45,7 @@ const Index = () => {
               </Link>
             </motion.div>
             
-            {/* Affichage de l'image améliorée pour mobile */}
+            {/* Hero Image bien visible sur mobile */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -56,31 +62,38 @@ const Index = () => {
               className="flex justify-center items-center mt-8 md:mt-12"
             >
               <div className="relative w-full flex justify-center items-center">
-                {/* Fond dégradé sous l'image pour la faire ressortir */}
+                {/* Fond dégradé uniquement visible si utile */}
                 <div
                   className="
                     absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-                    w-[92vw] h-[200px] xs:w-[95vw] xs:h-[230px] sm:w-[380px] sm:h-[240px] md:hidden
+                    w-[95vw] h-[35vw] min-h-[120px] max-h-[180px]
                     rounded-full
                     bg-gradient-to-b from-gold/30 via-white/40 to-transparent
-                    blur-md
+                    blur-lg
                     z-0
+                    pointer-events-none
                   "
+                  style={{
+                    // le dégradé est beaucoup plus subtil, il n'envahit pas l'image principale
+                    filter: 'blur(16px) opacity(0.5)'
+                  }}
                 />
                 <img
                   alt="Nike Air Force 1"
                   src="/lovable-uploads/03983684-4b14-4dfb-a925-37a1aadb29e3.jpg"
                   className="
                     relative z-10
-                    w-[92vw] max-w-[390px] xs:w-[95vw] xs:max-w-[420px] sm:w-[390px] sm:max-w-[440px] md:w-full md:max-w-[450px]
+                    w-[90vw] xs:w-[92vw] sm:w-[85vw] md:w-full
+                    max-w-[350px] xs:max-w-[380px] sm:max-w-[410px] md:max-w-[450px]
                     mx-auto
                     rounded-lg
-                    object-cover
+                    object-contain
                     transition-transform duration-500
-                    rotate-[-5deg] md:rotate-[-15deg]
-                    translate-y-2 md:translate-y-[60px]
-                    hover:rotate-[-2deg]
-                    shadow-lg
+                    rotate-[-3deg] md:rotate-[-15deg]
+                    translate-y-0 md:translate-y-[60px]
+                    hover:rotate-[-1deg]
+                    shadow-xl
+                    border border-white/60
                   "
                   style={{ boxShadow: '0 8px 44px 3px rgba(0,0,0,0.13)' }}
                 />
@@ -129,3 +142,4 @@ const Index = () => {
     </>;
 };
 export default Index;
+
