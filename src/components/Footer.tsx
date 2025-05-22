@@ -5,6 +5,11 @@ import { Instagram, Twitter, Mail, Phone } from 'lucide-react';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
+  // Fonction pour faire défiler la page vers le haut après la navigation
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <footer className="bg-black text-white pt-16 pb-8">
       <div className="container-custom">
@@ -28,16 +33,16 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4">Navigation</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-gold transition-colors">Accueil</Link>
+                <Link to="/" onClick={scrollToTop} className="text-gray-400 hover:text-gold transition-colors">Accueil</Link>
               </li>
               <li>
-                <Link to="/boutique" className="text-gray-400 hover:text-gold transition-colors">Boutique</Link>
+                <Link to="/boutique" onClick={scrollToTop} className="text-gray-400 hover:text-gold transition-colors">Boutique</Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-gold transition-colors">À propos</Link>
+                <Link to="/about" onClick={scrollToTop} className="text-gray-400 hover:text-gold transition-colors">À propos</Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-gold transition-colors">Contact</Link>
+                <Link to="/contact" onClick={scrollToTop} className="text-gray-400 hover:text-gold transition-colors">Contact</Link>
               </li>
             </ul>
           </div>
@@ -63,10 +68,10 @@ const Footer = () => {
               &copy; {currentYear} AIRFORCE221 - Tous droits réservés
             </p>
             <div className="flex space-x-6">
-              <Link to="/cgv" className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
+              <Link to="/cgv" onClick={scrollToTop} className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
                 CGV
               </Link>
-              <Link to="/confidentialite" className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
+              <Link to="/confidentialite" onClick={scrollToTop} className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
                 Politique de confidentialité
               </Link>
             </div>
