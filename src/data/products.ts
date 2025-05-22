@@ -1,3 +1,4 @@
+
 import { Product } from '@/contexts/CartContext';
 
 export const products: Product[] = [
@@ -5,7 +6,7 @@ export const products: Product[] = [
     id: "af1-white-standard",
     name: "Air Force 1 – Blanche Classique",
     price: 119.99,
-    image: "/images/af1-white-standard.webp",
+    image: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?q=80&w=1965&auto=format&fit=crop",
     category: "standard",
     isCustom: false,
     slogan: "L'icône intemporelle qui s'adapte à tous les styles.",
@@ -21,7 +22,7 @@ export const products: Product[] = [
     id: "af1-black-standard",
     name: "Air Force 1 – Noire Intense",
     price: 119.99,
-    image: "/images/af1-black-standard.webp",
+    image: "https://images.unsplash.com/photo-1543508282-6319a3e2621f?q=80&w=1915&auto=format&fit=crop",
     category: "standard",
     isCustom: false,
     slogan: "Discrète. Solide. Inarrêtable.",
@@ -37,7 +38,7 @@ export const products: Product[] = [
     id: "af1-white-custom",
     name: "Air Force 1 – Blanche Custom Corde",
     price: 139.99,
-    image: "/images/af1-white-custom.webp",
+    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1974&auto=format&fit=crop",
     category: "custom",
     isCustom: true,
     slogan: "Même silhouette, nouvelle attitude.",
@@ -53,7 +54,7 @@ export const products: Product[] = [
     id: "af1-black-custom",
     name: "Air Force 1 – Noire Custom Corde",
     price: 139.99,
-    image: "/images/af1-black-custom.webp",
+    image: "https://images.unsplash.com/photo-1605408499391-6368c628ef42?q=80&w=1974&auto=format&fit=crop",
     category: "custom",
     isCustom: true,
     slogan: "Le classique noir, revisité avec du caractère.",

@@ -22,13 +22,20 @@ const ProductDetail = () => {
   // Available sizes
   const sizes = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46];
   
-  // Multiple product images (using the same image for demo)
-  const productImages = [
-    product?.image,
-    product?.image?.replace('.webp', '-side.webp'),
-    product?.image?.replace('.webp', '-back.webp'),
-    product?.image?.replace('.webp', '-top.webp')
-  ];
+  // Multiple product images (using different angles for demo)
+  const getProductImages = (mainImageUrl: string | undefined) => {
+    if (!mainImageUrl) return [];
+    
+    // Pour le démo, nous utilisons la même image pour toutes les vues
+    return [
+      mainImageUrl,
+      mainImageUrl,
+      mainImageUrl,
+      mainImageUrl
+    ];
+  };
+  
+  const productImages = getProductImages(product?.image);
   
   const handleAddToCart = () => {
     if (product && selectedSize) {

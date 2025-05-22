@@ -18,7 +18,7 @@ const Index = () => {
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/hero-background.webp" 
+            src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=2960&auto=format&fit=crop" 
             alt="Hero background" 
             className="w-full h-full object-cover"
           />
