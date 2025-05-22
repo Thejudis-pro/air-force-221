@@ -1,4 +1,3 @@
-
 // EmailJS implementation using the provided credentials
 
 import emailjs from '@emailjs/browser';
@@ -45,7 +44,8 @@ export const sendOrderConfirmationEmail = async (orderData: OrderData): Promise<
       recipient: OWNER_EMAIL
     });
     
-    // Création de l'objet de données pour le template
+    // Important: EmailJS v3 utilise la propriété "to_name" pour le destinataire
+    // et a besoin des propriétés spécifiques selon le template
     const templateParams = {
       order_number: orderData.orderNumber,
       customer_name: orderData.customer.fullName,
@@ -55,12 +55,10 @@ export const sendOrderConfirmationEmail = async (orderData: OrderData): Promise<
       customer_notes: orderData.customer.notes || "Aucune note",
       order_items: formatOrderItems(orderData.items),
       order_total: orderData.total.toFixed(2) + " €",
-      // Essayer plusieurs variantes du nom du destinataire pour s'assurer que l'un d'eux fonctionne
+      to_name: "Administrateur", // Nom du destinataire (à adapter selon votre template)
       to_email: OWNER_EMAIL,
-      recipient: OWNER_EMAIL,
-      to: OWNER_EMAIL,
-      email: OWNER_EMAIL,
-      recipient_email: OWNER_EMAIL
+      // Utilise la syntaxe correcte pour le destinataire dans EmailJS
+      reply_to: orderData.customer.email
     };
     
     console.log("Paramètres du template:", templateParams);
