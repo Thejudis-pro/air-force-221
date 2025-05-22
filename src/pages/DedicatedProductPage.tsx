@@ -199,7 +199,7 @@ const DedicatedProductPage = () => {
                 {product.slogan && (
                   <p className="text-xl text-gray-600 mb-4 italic">{product.slogan}</p>
                 )}
-                <p className="text-2xl font-semibold text-gold mb-6">{product.price.toFixed(2)} €</p>
+                <p className="text-2xl font-semibold text-gold mb-6">{product.price} FCFA</p>
                 
                 {/* Product Tags */}
                 <div className="flex gap-3 mb-6">
@@ -367,7 +367,7 @@ const DedicatedProductPage = () => {
                   </div>
                   <div className="p-4 bg-white">
                     <h3 className="font-medium text-lg mb-1">{similarProduct.name}</h3>
-                    <p className="text-gold font-semibold">{similarProduct.price.toFixed(2)} €</p>
+                    <p className="text-gold font-semibold">{similarProduct.price} FCFA</p>
                   </div>
                 </Link>
               ))}

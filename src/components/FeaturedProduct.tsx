@@ -42,7 +42,7 @@ const FeaturedProduct = ({ product, index }: FeaturedProductProps) => {
           {product.slogan && (
             <p className="text-lg text-gray-600 mb-3 italic">{product.slogan}</p>
           )}
-          <p className="text-xl font-semibold text-gold mb-4">{product.price.toFixed(2)} €</p>
+          <p className="text-xl font-semibold text-gold mb-4">{product.price} FCFA</p>
           <p className="text-gray-600 mb-4">
             {product.description?.substring(0, 150)}...
           </p>

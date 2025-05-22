@@ -358,7 +358,7 @@ const Cart = () => {
                             </div>
                           </td>
                           <td className="text-right font-medium">
-                            {(item.product.price * item.quantity).toFixed(2)} €
+                            {(item.product.price * item.quantity)} FCFA
                           </td>
                           <td className="text-right">
                             <button 
@@ -383,7 +383,7 @@ const Cart = () => {
                   <div className="space-y-3 mb-6">
                     <div className="flex justify-between text-gray-600">
                       <span>Sous-total</span>
-                      <span>{subtotal.toFixed(2)} €</span>
+                      <span>{subtotal} FCFA</span>
                     </div>
                     <div className="flex justify-between text-gray-600">
                       <span>Livraison</span>
@@ -391,7 +391,7 @@ const Cart = () => {
                     </div>
                     <div className="border-t pt-3 flex justify-between font-bold text-lg">
                       <span>Total</span>
-                      <span>{(subtotal >= 100 ? subtotal : subtotal + 4.99).toFixed(2)} €</span>
+                      <span>{(subtotal >= 100 ? subtotal : subtotal + 4.99)} FCFA</span>
                     </div>
                   </div>
                   

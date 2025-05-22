@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -127,7 +128,7 @@ const ThankYou = () => {
                           </div>
                         </div>
                         <p className="font-medium">
-                          {(item.product.price * item.quantity).toFixed(2)} €
+                          {(item.product.price * item.quantity)} FCFA
                         </p>
                       </div>
                     ))}
@@ -136,7 +137,7 @@ const ThankYou = () => {
                   <div className="border-t mt-4 pt-4">
                     <div className="flex justify-between font-bold">
                       <span>Total</span>
-                      <span>{orderData.total.toFixed(2)} €</span>
+                      <span>{orderData.total} FCFA</span>
                     </div>
                   </div>
                 </div>

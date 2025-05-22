@@ -84,7 +84,7 @@ const Boutique = () => {
                   </div>
                   <div className="p-4">
                     <h3 className="font-medium text-lg mb-1">{product.name}</h3>
-                    <p className="text-gold font-semibold">{product.price.toFixed(2)} €</p>
+                    <p className="text-gold font-semibold">{product.price} FCFA</p>
                     <div className="mt-3 text-sm text-gray-600">
                       {product.isCustom ? "Édition custom" : "Édition standard"}
                     </div>
