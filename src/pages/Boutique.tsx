@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { products } from '@/data/products';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { Helmet } from 'react-helmet';
 
 const Boutique = () => {
   const [filter, setFilter] = useState<string | null>(null);
@@ -17,6 +18,11 @@ const Boutique = () => {
   
   return (
     <>
+      <Helmet>
+        <title>Boutique | Collection Air Force 1 Classiques et Custom</title>
+        <meta name="description" content="Découvrez notre collection complète de Air Force 1, des modèles classiques aux versions custom avec lacets corde. Livraison rapide, qualité premium." />
+      </Helmet>
+    
       <Header />
       
       {/* Page Title */}
@@ -68,7 +74,7 @@ const Boutique = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <Link to={`/produit/${product.id}`} className="product-card block h-full">
+                <Link to={`/produits/${product.slug}`} className="product-card block h-full">
                   <div className="aspect-square overflow-hidden bg-gray-100">
                     <img 
                       src={product.image} 

@@ -16,7 +16,14 @@ export const products: Product[] = [
       "Semelle amortissante Nike Air",
       "Polyvalente : s'accorde à toutes les tenues",
       "Facile à entretenir"
-    ]
+    ],
+    slug: "air-force-1-blanche",
+    seo: {
+      title: "Air Force 1 Blanche – Sneaker Nike Classique & Indémodable | Shop AF1",
+      metaDescription: "Découvre la Nike Air Force 1 blanche, la sneaker légendaire au style épuré. Confort, design intemporel et qualité premium."
+    },
+    materials: ["Cuir premium", "Caoutchouc durable", "Textile respirant"],
+    details: "Design authentique respectant les codes classiques de Nike. Réputée pour son confort au quotidien et sa durabilité."
   },
   {
     id: "af1-black-standard",
@@ -32,7 +39,14 @@ export const products: Product[] = [
       "Cuir durable et semelle épaisse",
       "Parfaite pour l'hiver ou les looks dark",
       "Facile à porter au quotidien"
-    ]
+    ],
+    slug: "air-force-1-noire",
+    seo: {
+      title: "Air Force 1 Noire – Sneaker Nike Full Black | Style Urbain et Puissant",
+      metaDescription: "La Nike Air Force 1 noire est parfaite pour un look sobre et affirmé. Design iconique, confort optimal et style urbain inimitable."
+    },
+    materials: ["Cuir premium traité", "Caoutchouc résistant", "Semelle Air encapsulée"],
+    details: "Finition full black qui ne passera jamais de mode. Construction robuste pensée pour résister à une utilisation intensive."
   },
   {
     id: "af1-white-custom",
@@ -48,7 +62,14 @@ export const products: Product[] = [
       "Toujours aussi confortable et épurée",
       "Finition premium, édition limitée",
       "Pour affirmer ton style en toute subtilité"
-    ]
+    ],
+    slug: "air-force-1-blanche-custom-corde",
+    seo: {
+      title: "Air Force 1 Blanche Custom – Lacets Corde Uniques | Édition Limitée",
+      metaDescription: "Revisite la AF1 blanche avec un style original. Découvre notre édition avec lacets corde pour un look unique qui te démarque."
+    },
+    materials: ["Cuir premium", "Lacets style corde épais", "Semelle Air Nike classique"],
+    details: "Édition limitée customisée avec des lacets style corde sélectionnés pour leur qualité et leur esthétique distinctive."
   },
   {
     id: "af1-black-custom",
@@ -64,13 +85,25 @@ export const products: Product[] = [
       "Lacets corde épais en finition brute",
       "Une sneaker custom audacieuse mais sobre",
       "Confort Nike classique + style affirmé"
-    ]
+    ],
+    slug: "air-force-1-noire-custom-corde",
+    seo: {
+      title: "Air Force 1 Noire Custom – Sneaker Originale avec Lacets Corde | Look Unique",
+      metaDescription: "Adopte la Air Force 1 noire avec lacets corde pour un style distinctif et personnel. Édition limitée alliant élégance urbaine et détails créatifs."
+    },
+    materials: ["Cuir premium noir traité", "Lacets corde épais", "Construction renforcée"],
+    details: "Version remixée de l'iconique AF1 noire, avec des lacets style corde qui apportent texture et caractère à ce modèle intemporel."
   }
 ];
 
 // Trouver un produit par son ID
 export const getProductById = (id: string): Product | undefined => {
   return products.find(product => product.id === id);
+};
+
+// Trouver un produit par son slug
+export const getProductBySlug = (slug: string): Product | undefined => {
+  return products.find(product => product.slug === slug);
 };
 
 // Obtenir des produits similaires (même catégorie sauf le produit lui-même)

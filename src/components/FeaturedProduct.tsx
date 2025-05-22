@@ -61,7 +61,7 @@ const FeaturedProduct = ({ product, index }: FeaturedProductProps) => {
           )}
           
           <Link 
-            to={`/produit/${product.id}`} 
+            to={`/produits/${product.slug}`} 
             className="btn btn-primary px-6 py-3"
           >
             Voir le produit
