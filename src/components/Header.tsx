@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, Menu, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -7,28 +7,12 @@ import { useCart } from '@/contexts/CartContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const { cartItems } = useCart();
   
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
   
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-white/90 shadow-sm sticky-nav' : 'py-5 bg-transparent'}`}>
+    <header className="fixed w-full z-50 py-4 bg-gray-100 shadow-sm">
       <div className="container-custom flex justify-between items-center">
         <Link to="/" className="text-xl md:text-2xl font-montserrat font-bold tracking-tight">
           AIR <span className="text-gold">FORCE</span> 221
