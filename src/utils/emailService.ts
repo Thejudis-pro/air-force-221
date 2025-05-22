@@ -38,21 +38,37 @@ const OWNER_EMAIL = "judismetognon2@gmail.com";
  */
 export const sendOrderConfirmationEmail = async (orderData: OrderData): Promise<boolean> => {
   try {
+    console.log("Tentative d'envoi d'email avec les paramètres:", {
+      service_id: EMAIL_SERVICE_ID,
+      template_id: EMAIL_TEMPLATE_ID,
+      user_id: EMAIL_PUBLIC_KEY,
+      recipient: OWNER_EMAIL
+    });
+    
+    // Création de l'objet de données pour le template
+    const templateParams = {
+      order_number: orderData.orderNumber,
+      customer_name: orderData.customer.fullName,
+      customer_email: orderData.customer.email,
+      customer_phone: orderData.customer.phone,
+      customer_address: `${orderData.customer.address}, ${orderData.customer.postalCode} ${orderData.customer.city}, ${orderData.customer.country}`,
+      customer_notes: orderData.customer.notes || "Aucune note",
+      order_items: formatOrderItems(orderData.items),
+      order_total: orderData.total.toFixed(2) + " €",
+      // Essayer plusieurs variantes du nom du destinataire pour s'assurer que l'un d'eux fonctionne
+      to_email: OWNER_EMAIL,
+      recipient: OWNER_EMAIL,
+      to: OWNER_EMAIL,
+      email: OWNER_EMAIL,
+      recipient_email: OWNER_EMAIL
+    };
+    
+    console.log("Paramètres du template:", templateParams);
+    
     const response = await emailjs.send(
       EMAIL_SERVICE_ID,
       EMAIL_TEMPLATE_ID,
-      {
-        order_number: orderData.orderNumber,
-        customer_name: orderData.customer.fullName,
-        customer_email: orderData.customer.email,
-        customer_phone: orderData.customer.phone,
-        customer_address: `${orderData.customer.address}, ${orderData.customer.postalCode} ${orderData.customer.city}, ${orderData.customer.country}`,
-        customer_notes: orderData.customer.notes || "Aucune note",
-        order_items: formatOrderItems(orderData.items),
-        order_total: orderData.total.toFixed(2) + " €",
-        // Make sure "to_email" matches EXACTLY the variable name expected in your EmailJS template
-        to_email: OWNER_EMAIL
-      },
+      templateParams,
       EMAIL_PUBLIC_KEY
     );
     
