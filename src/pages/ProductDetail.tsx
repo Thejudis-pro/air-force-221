@@ -22,20 +22,25 @@ const ProductDetail = () => {
   // Available sizes
   const sizes = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46];
   
-  // Multiple product images (using different angles for demo)
-  const getProductImages = (mainImageUrl: string | undefined) => {
-    if (!mainImageUrl) return [];
+  // Multiple product images
+  const getProductImages = (product: any) => {
+    if (!product) return [];
     
-    // Pour le démo, nous utilisons la même image pour toutes les vues
+    // Si le produit a des images spécifiques, les utiliser
+    if (product.productImages && product.productImages.length > 0) {
+      return product.productImages;
+    }
+    
+    // Sinon, utiliser l'image principale répétée 4 fois
     return [
-      mainImageUrl,
-      mainImageUrl,
-      mainImageUrl,
-      mainImageUrl
+      product.image,
+      product.image,
+      product.image,
+      product.image
     ];
   };
   
-  const productImages = getProductImages(product?.image);
+  const productImages = getProductImages(product);
   
   const handleAddToCart = () => {
     if (product && selectedSize) {
@@ -79,7 +84,7 @@ const ProductDetail = () => {
                 <div className="aspect-square overflow-hidden bg-gray-100 rounded-lg">
                   <img 
                     src={productImages[activeImageIndex]} 
-                    alt={product.name} 
+                    alt={`${product.name} - Vue ${activeImageIndex + 1}`}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -96,7 +101,7 @@ const ProductDetail = () => {
                   >
                     <img 
                       src={image} 
-                      alt={`${product.name} view ${index + 1}`} 
+                      alt={`${product.name} vue ${index + 1}`} 
                       className="w-full h-full object-cover"
                     />
                   </button>

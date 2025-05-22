@@ -6,7 +6,13 @@ export const products: Product[] = [
     id: "af1-white-standard",
     name: "Air Force 1 – Blanche Classique",
     price: 119.99,
-    image: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?q=80&w=1965&auto=format&fit=crop",
+    image: "/lovable-uploads/0785c5d5-ddaa-493d-bade-52f86fba61d9.png",
+    productImages: [
+      "/lovable-uploads/0785c5d5-ddaa-493d-bade-52f86fba61d9.png", // Vue de dessus
+      "/lovable-uploads/ba922830-ba52-47fa-a434-a368bc3922ae.png", // Vue de côté
+      "/lovable-uploads/23f58c75-9e59-4328-8c37-fd4fdc38d507.png", // Vue de derrière
+      "/lovable-uploads/555acf49-99af-4a2c-8745-89aba5e2c5a4.png", // Vue d'ensemble
+    ],
     category: "standard",
     isCustom: false,
     slogan: "L'icône intemporelle qui s'adapte à tous les styles.",
@@ -29,7 +35,13 @@ export const products: Product[] = [
     id: "af1-black-standard",
     name: "Air Force 1 – Noire Intense",
     price: 119.99,
-    image: "https://images.unsplash.com/photo-1543508282-6319a3e2621f?q=80&w=1915&auto=format&fit=crop",
+    image: "/lovable-uploads/ad1ad722-82b7-45f9-9c6b-e05c3192a273.png",
+    productImages: [
+      "/lovable-uploads/d7d85a1f-a037-4458-8d75-3951d78cb70a.png", // Vue de dessus
+      "/lovable-uploads/ad1ad722-82b7-45f9-9c6b-e05c3192a273.png", // Vue d'ensemble
+      "/lovable-uploads/3e8a2e5f-88c1-4083-8e4a-f32f27863a15.png", // Vue de derrière
+      "/lovable-uploads/e0119833-a038-4033-9a3c-07c5926a4b11.png", // Vue de côté
+    ],
     category: "standard",
     isCustom: false,
     slogan: "Discrète. Solide. Inarrêtable.",
@@ -166,3 +178,4 @@ export const instagramPosts = [
     username: "@urban.kicks"
   }
 ];
+
