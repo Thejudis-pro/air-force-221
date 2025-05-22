@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Instagram, TikTok, Mail, Phone } from 'lucide-react';
+import { Instagram, Twitter, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,8 +18,8 @@ const Footer = () => {
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold transition-colors">
                 <Instagram />
               </a>
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold transition-colors">
-                <TikTok />
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold transition-colors">
+                <Twitter />
               </a>
             </div>
           </div>

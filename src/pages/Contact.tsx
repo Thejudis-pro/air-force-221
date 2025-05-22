@@ -1,6 +1,6 @@
 
 import { useState, FormEvent } from 'react';
-import { Instagram, TikTok, Phone } from 'lucide-react';
+import { Instagram, Twitter, Phone } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { toast } from "@/components/ui/sonner";
@@ -187,13 +187,13 @@ const Contact = () => {
                   </a>
                   
                   <a 
-                    href="https://tiktok.com" 
+                    href="https://twitter.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center p-3 bg-white rounded-md hover:bg-gold hover:text-white transition-colors"
                   >
-                    <TikTok className="h-6 w-6 mr-3" />
-                    <span className="font-medium">TikTok</span>
+                    <Twitter className="h-6 w-6 mr-3" />
+                    <span className="font-medium">Twitter</span>
                   </a>
                   
                   <a 
