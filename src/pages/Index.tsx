@@ -74,7 +74,6 @@ const Index = () => {
                     pointer-events-none
                   "
                   style={{
-                    // le dégradé est beaucoup plus subtil, il n'envahit pas l'image principale
                     filter: 'blur(16px) opacity(0.5)'
                   }}
                 />
@@ -89,9 +88,9 @@ const Index = () => {
                     rounded-lg
                     object-contain
                     transition-transform duration-500
-                    rotate-[-3deg] md:rotate-[-15deg]
-                    translate-y-0 md:translate-y-[60px]
-                    hover:rotate-[-1deg]
+                    rotate-[-3deg] md:rotate-[0deg]
+                    translate-y-0 md:translate-y-[30px]
+                    hover:scale-[1.02]
                     shadow-xl
                     border border-white/60
                   "
@@ -142,4 +141,3 @@ const Index = () => {
     </>;
 };
 export default Index;
-
