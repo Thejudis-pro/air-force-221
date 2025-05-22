@@ -18,11 +18,11 @@ const Index = () => {
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=2960&auto=format&fit=crop" 
-            alt="Hero background" 
+            src="/lovable-uploads/b9d43192-5b4a-43e7-9a7a-62fda8ee531e.png" 
+            alt="Nike Air Force 1" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/20"></div>
         </div>
         
         <div className="container-custom relative z-10 text-white">
