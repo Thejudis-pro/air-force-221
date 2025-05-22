@@ -5,7 +5,7 @@ export const products: Product[] = [
   {
     id: "af1-white-standard",
     name: "Air Force 1 – Blanche Classique",
-    price: 119.99,
+    price: 15000,
     image: "/lovable-uploads/0785c5d5-ddaa-493d-bade-52f86fba61d9.png",
     productImages: [
       "/lovable-uploads/0785c5d5-ddaa-493d-bade-52f86fba61d9.png", // Vue de dessus
@@ -34,7 +34,7 @@ export const products: Product[] = [
   {
     id: "af1-black-standard",
     name: "Air Force 1 – Noire Intense",
-    price: 119.99,
+    price: 15000,
     image: "/lovable-uploads/ad1ad722-82b7-45f9-9c6b-e05c3192a273.png",
     productImages: [
       "/lovable-uploads/d7d85a1f-a037-4458-8d75-3951d78cb70a.png", // Vue de dessus
@@ -63,7 +63,7 @@ export const products: Product[] = [
   {
     id: "af1-white-custom",
     name: "Air Force 1 – Blanche Custom Corde",
-    price: 139.99,
+    price: 18000,
     image: "/lovable-uploads/b0bff359-55b6-4f31-8926-b9e75f7737e4.png",
     productImages: [
       "/lovable-uploads/b0bff359-55b6-4f31-8926-b9e75f7737e4.png", // Vue d'ensemble
@@ -92,7 +92,7 @@ export const products: Product[] = [
   {
     id: "af1-black-custom",
     name: "Air Force 1 – Noire Custom Corde",
-    price: 139.99,
+    price: 18000,
     image: "/lovable-uploads/4c6e45ca-bfd7-46b6-b79e-323534514618.png",
     productImages: [
       "/lovable-uploads/4c6e45ca-bfd7-46b6-b79e-323534514618.png", // Vue d'ensemble
