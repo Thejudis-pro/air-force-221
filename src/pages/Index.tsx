@@ -60,7 +60,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/7ab42e81-b240-43c1-83bc-01e450db79b4.png" 
                   alt="Nike Air Force 1" 
-                  className="w-full max-w-[304px] object-contain" 
+                  className="w-full max-w-[290px] object-contain" 
                 />
               </div>
             </motion.div>
