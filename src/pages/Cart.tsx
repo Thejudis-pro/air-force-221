@@ -1,197 +1,187 @@
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Trash2, MinusCircle, PlusCircle, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { toast } from "@/components/ui/sonner";
+import { MinusCircle, PlusCircle, X, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, updateQuantity, clearCart, cartTotal } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, clearCart, total } = useCart();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   
-  const handleCheckout = async () => {
-    if (cartItems.length === 0) {
-      toast.error("Votre panier est vide");
-      return;
-    }
-    
-    setIsCheckingOut(true);
-    
-    // Simuler le processus de paiement
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    toast.success("Commande validée avec succès !");
-    clearCart();
-    setIsCheckingOut(false);
+  const handleRemoveItem = (index: number) => {
+    removeFromCart(index);
   };
   
+  const handleQuantityChange = (index: number, newQuantity: number) => {
+    if (newQuantity >= 1) {
+      updateQuantity(index, newQuantity);
+    }
+  };
+  
+  const handleCheckout = () => {
+    setIsCheckingOut(true);
+    
+    // Simulate checkout process
+    setTimeout(() => {
+      clearCart();
+      setIsCheckingOut(false);
+      // Navigate to thank you page or show success message
+      alert('Commande passée avec succès !');
+    }, 2000);
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Panier | AirSneak</title>
+        <meta name="description" content="Validez votre panier et finalisez votre commande de sneakers Air Force 1." />
+      </Helmet>
+      
       <Header />
       
-      <section className="pt-32 pb-16">
+      <div className="pt-32 pb-20">
         <div className="container-custom">
-          <h1 className="text-3xl md:text-4xl font-bold mb-8">Votre Panier</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-10">Votre Panier</h1>
           
           {cartItems.length === 0 ? (
             <div className="text-center py-16">
-              <h2 className="text-2xl font-medium mb-6">Votre panier est vide</h2>
-              <p className="text-gray-600 mb-8">Ajoutez des produits à votre panier pour commencer vos achats</p>
-              <Link to="/boutique" className="btn btn-primary px-6 py-3">
-                Parcourir la collection
+              <div className="text-6xl mb-4">🛒</div>
+              <h2 className="text-2xl font-bold mb-4">Votre panier est vide</h2>
+              <p className="text-gray-600 mb-8">Parcourez notre boutique et ajoutez des articles à votre panier.</p>
+              <Link to="/boutique" className="btn btn-primary">
+                Voir les produits
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="flex flex-col lg:flex-row gap-10">
               {/* Cart Items */}
-              <div className="lg:col-span-2">
-                <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-                  <div className="hidden md:grid grid-cols-5 gap-4 p-4 border-b border-gray-200 bg-gray-50 font-medium">
-                    <div className="col-span-2">Produit</div>
-                    <div className="text-center">Prix</div>
-                    <div className="text-center">Quantité</div>
-                    <div className="text-end">Total</div>
-                  </div>
-                  
-                  {cartItems.map((item) => (
-                    <div key={`${item.product.id}-${item.size}`} className="p-4 border-b border-gray-100 last:border-b-0">
-                      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
-                        {/* Product */}
-                        <div className="col-span-2 flex items-center gap-4">
-                          <div className="w-20 h-20 bg-gray-100 rounded-md overflow-hidden flex-shrink-0">
-                            <img 
-                              src={item.product.image} 
-                              alt={item.product.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <div>
-                            <h3 className="font-medium">{item.product.name}</h3>
-                            <p className="text-sm text-gray-500">Taille: {item.size}</p>
-                            <button
-                              onClick={() => removeFromCart(item.product.id, item.size)}
-                              className="text-red-500 text-sm flex items-center mt-2 hover:text-red-700 md:hidden"
+              <div className="w-full lg:w-2/3">
+                <div className="bg-white rounded-lg shadow-sm p-6">
+                  <table className="w-full">
+                    <thead className="border-b">
+                      <tr>
+                        <th className="text-left pb-4">Produit</th>
+                        <th className="text-center pb-4">Taille</th>
+                        <th className="text-center pb-4">Quantité</th>
+                        <th className="text-right pb-4">Prix</th>
+                        <th className="pb-4"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cartItems.map((item, index) => (
+                        <motion.tr 
+                          key={`${item.product.id}-${item.size}`}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                          className="border-b"
+                        >
+                          <td className="py-4">
+                            <div className="flex items-center">
+                              <img 
+                                src={item.product.image} 
+                                alt={item.product.name} 
+                                className="w-16 h-16 object-cover rounded mr-4"
+                              />
+                              <div>
+                                <h3 className="font-medium">{item.product.name}</h3>
+                                <p className="text-sm text-gray-600">
+                                  {item.product.isCustom ? "Édition custom" : "Édition standard"}
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="text-center">
+                            {item.size}
+                          </td>
+                          <td className="text-center">
+                            <div className="flex items-center justify-center">
+                              <button 
+                                onClick={() => handleQuantityChange(index, item.quantity - 1)}
+                                className="text-gray-500 hover:text-black"
+                              >
+                                <MinusCircle size={18} />
+                              </button>
+                              <span className="mx-3 w-6 text-center">{item.quantity}</span>
+                              <button 
+                                onClick={() => handleQuantityChange(index, item.quantity + 1)}
+                                className="text-gray-500 hover:text-black"
+                              >
+                                <PlusCircle size={18} />
+                              </button>
+                            </div>
+                          </td>
+                          <td className="text-right font-medium">
+                            {(item.product.price * item.quantity).toFixed(2)} €
+                          </td>
+                          <td className="text-right">
+                            <button 
+                              onClick={() => handleRemoveItem(index)}
+                              className="text-gray-400 hover:text-red-500 transition-colors"
                             >
-                              <Trash2 className="h-4 w-4 mr-1" />
-                              Supprimer
+                              <X size={18} />
                             </button>
-                          </div>
-                        </div>
-                        
-                        {/* Price */}
-                        <div className="md:text-center">
-                          <div className="md:hidden text-sm text-gray-500">Prix:</div>
-                          {item.product.price.toFixed(2)} €
-                        </div>
-                        
-                        {/* Quantity */}
-                        <div className="md:text-center">
-                          <div className="md:hidden text-sm text-gray-500">Quantité:</div>
-                          <div className="flex items-center md:justify-center">
-                            <button
-                              onClick={() => updateQuantity(item.product.id, item.size, item.quantity - 1)}
-                              disabled={item.quantity <= 1}
-                              className={`text-gray-500 hover:text-black transition-colors ${item.quantity <= 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
-                            >
-                              <MinusCircle className="h-5 w-5" />
-                            </button>
-                            <span className="mx-3 w-6 text-center">{item.quantity}</span>
-                            <button
-                              onClick={() => updateQuantity(item.product.id, item.size, item.quantity + 1)}
-                              className="text-gray-500 hover:text-black transition-colors"
-                            >
-                              <PlusCircle className="h-5 w-5" />
-                            </button>
-                          </div>
-                        </div>
-                        
-                        {/* Total */}
-                        <div className="md:text-end flex items-center justify-between">
-                          <div className="md:hidden text-sm text-gray-500">Total:</div>
-                          <span className="font-medium">{(item.product.price * item.quantity).toFixed(2)} €</span>
-                          <button
-                            onClick={() => removeFromCart(item.product.id, item.size)}
-                            className="text-red-500 hover:text-red-700 hidden md:block"
-                          >
-                            <Trash2 className="h-5 w-5" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="flex justify-between mt-6">
-                  <Link to="/boutique" className="btn btn-secondary inline-flex items-center gap-2">
-                    <ChevronRight className="h-4 w-4 rotate-180" />
-                    Continuer les achats
-                  </Link>
-                  <button onClick={clearCart} className="btn btn-secondary text-red-600 hover:text-red-700">
-                    Vider le panier
-                  </button>
+                          </td>
+                        </motion.tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
               
-              {/* Order Summary */}
-              <div>
-                <div className="bg-white rounded-lg shadow-sm p-6">
-                  <h2 className="text-xl font-bold mb-6">Résumé de la commande</h2>
+              {/* Cart Summary */}
+              <div className="w-full lg:w-1/3">
+                <div className="bg-white rounded-lg shadow-sm p-6 sticky top-24">
+                  <h2 className="text-xl font-bold mb-6">Récapitulatif</h2>
                   
-                  <div className="space-y-4 mb-6">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Sous-total</span>
-                      <span>{cartTotal.toFixed(2)} €</span>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex justify-between text-gray-600">
+                      <span>Sous-total</span>
+                      <span>{total.toFixed(2)} €</span>
                     </div>
-                    
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Livraison</span>
-                      <span>Gratuite</span>
+                    <div className="flex justify-between text-gray-600">
+                      <span>Livraison</span>
+                      <span>{total >= 100 ? 'Gratuite' : '4.99 €'}</span>
                     </div>
-                    
-                    <div className="border-t border-gray-200 pt-4 flex justify-between font-medium">
+                    <div className="border-t pt-3 flex justify-between font-bold text-lg">
                       <span>Total</span>
-                      <span className="text-xl">{cartTotal.toFixed(2)} €</span>
+                      <span>{(total >= 100 ? total : total + 4.99).toFixed(2)} €</span>
                     </div>
                   </div>
                   
-                  <button
+                  <button 
                     onClick={handleCheckout}
-                    disabled={isCheckingOut || cartItems.length === 0}
-                    className={`btn btn-primary w-full py-3 ${(isCheckingOut || cartItems.length === 0) ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    disabled={isCheckingOut}
+                    className={`btn w-full ${
+                      isCheckingOut 
+                        ? 'bg-gray-300 cursor-not-allowed' 
+                        : 'btn-primary'
+                    } flex items-center justify-center`}
                   >
-                    {isCheckingOut ? 'Traitement...' : 'Passer à la caisse'}
+                    {isCheckingOut ? (
+                      <span>Traitement en cours...</span>
+                    ) : (
+                      <>
+                        <span>Valider la commande</span>
+                        <ArrowRight className="ml-2" size={18} />
+                      </>
+                    )}
                   </button>
                   
-                  <div className="mt-6 space-y-4">
-                    <div className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                      </svg>
-                      <span className="text-sm text-gray-500">Paiement 100% sécurisé</span>
-                    </div>
-                    
-                    <div className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                      </svg>
-                      <span className="text-sm text-gray-500">Livraison sous 24h</span>
-                    </div>
-                    
-                    <div className="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
-                      </svg>
-                      <span className="text-sm text-gray-500">Retour gratuit sous 14 jours</span>
-                    </div>
-                  </div>
+                  <p className="text-xs text-gray-500 text-center mt-4">
+                    En validant votre commande, vous acceptez nos conditions générales de vente.
+                  </p>
                 </div>
               </div>
             </div>
           )}
         </div>
-      </section>
+      </div>
       
       <Footer />
     </>

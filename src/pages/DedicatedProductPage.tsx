@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -7,7 +6,6 @@ import { useCart } from '@/contexts/CartContext';
 import { getProductBySlug, getSimilarProducts } from '@/data/products';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Helmet } from 'react-helmet';
 
