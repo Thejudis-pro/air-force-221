@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Product } from '@/contexts/CartContext';
+import { Check } from 'lucide-react';
 
 interface FeaturedProductProps {
   product: Product;
@@ -37,14 +38,28 @@ const FeaturedProduct = ({ product, index }: FeaturedProductProps) => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-3">{product.name}</h3>
+          <h3 className="text-2xl md:text-3xl font-bold mb-2">{product.name}</h3>
+          {product.slogan && (
+            <p className="text-lg text-gray-600 mb-3 italic">{product.slogan}</p>
+          )}
           <p className="text-xl font-semibold text-gold mb-4">{product.price.toFixed(2)} €</p>
-          <p className="text-gray-600 mb-6">
-            {product.isCustom 
-              ? "Version premium avec lacets épais style corde pour un style unique et différenciant."
-              : "Modèle standard iconique, indémodable et parfait pour tous les styles urbains."
-            }
+          <p className="text-gray-600 mb-4">
+            {product.description?.substring(0, 150)}...
           </p>
+          
+          {product.highlights && product.highlights.length > 0 && (
+            <div className="mb-6">
+              <ul className="space-y-2">
+                {product.highlights.slice(0, 2).map((highlight, i) => (
+                  <li key={i} className="flex items-start">
+                    <Check className="h-5 w-5 text-gold mr-2 flex-shrink-0 mt-0.5" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
           <Link 
             to={`/produit/${product.id}`} 
             className="btn btn-primary px-6 py-3"

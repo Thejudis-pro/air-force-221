@@ -1,38 +1,69 @@
-
 import { Product } from '@/contexts/CartContext';
 
 export const products: Product[] = [
   {
     id: "af1-white-standard",
-    name: "Nike Air Force 1 Blanche",
+    name: "Air Force 1 – Blanche Classique",
     price: 119.99,
     image: "/images/af1-white-standard.webp",
     category: "standard",
-    isCustom: false
+    isCustom: false,
+    slogan: "L'icône intemporelle qui s'adapte à tous les styles.",
+    description: "Élégante, sobre et légendaire. La Air Force 1 blanche est bien plus qu'une sneaker : c'est un classique de la culture urbaine. Avec son design épuré, sa silhouette mythique et son confort durable, elle se porte avec tout, partout, tout le temps. Que tu sois streetwear, casual ou minimaliste, elle s'impose comme la base de toute collection.",
+    highlights: [
+      "Cuir premium blanc éclatant",
+      "Semelle amortissante Nike Air",
+      "Polyvalente : s'accorde à toutes les tenues",
+      "Facile à entretenir"
+    ]
   },
   {
     id: "af1-black-standard",
-    name: "Nike Air Force 1 Noire",
+    name: "Air Force 1 – Noire Intense",
     price: 119.99,
     image: "/images/af1-black-standard.webp",
     category: "standard",
-    isCustom: false
+    isCustom: false,
+    slogan: "Discrète. Solide. Inarrêtable.",
+    description: "Pour ceux qui veulent rester dans l'ombre tout en faisant une vraie déclaration de style. La Air Force 1 noire est synonyme de puissance et de caractère. Avec son look monochrome et son design robuste, elle apporte une touche sérieuse et affirmée à toutes tes tenues. Parfaite pour un look urbain assumé et sans compromis.",
+    highlights: [
+      "Look full black élégant et audacieux",
+      "Cuir durable et semelle épaisse",
+      "Parfaite pour l'hiver ou les looks dark",
+      "Facile à porter au quotidien"
+    ]
   },
   {
     id: "af1-white-custom",
-    name: "Nike Air Force 1 Blanche Custom",
+    name: "Air Force 1 – Blanche Custom Corde",
     price: 139.99,
     image: "/images/af1-white-custom.webp",
     category: "custom",
-    isCustom: true
+    isCustom: true,
+    slogan: "Même silhouette, nouvelle attitude.",
+    description: "Redécouvre la légendaire AF1 blanche, revisitée avec des lacets style corde ultra stylés. Ce modèle custom apporte une touche unique et créative à une sneaker déjà culte. Idéal pour ceux qui veulent se démarquer sans en faire trop, tout en gardant une base classique et clean. C'est le twist parfait entre tradition et tendance.",
+    highlights: [
+      "Lacets corde épais pour un look personnalisé",
+      "Toujours aussi confortable et épurée",
+      "Finition premium, édition limitée",
+      "Pour affirmer ton style en toute subtilité"
+    ]
   },
   {
     id: "af1-black-custom",
-    name: "Nike Air Force 1 Noire Custom",
+    name: "Air Force 1 – Noire Custom Corde",
     price: 139.99,
     image: "/images/af1-black-custom.webp",
     category: "custom",
-    isCustom: true
+    isCustom: true,
+    slogan: "Le classique noir, revisité avec du caractère.",
+    description: "Cette version custom de la AF1 noire ne laisse personne indifférent. Les lacets corde apportent une nouvelle dimension à cette sneaker mythique, créant un équilibre parfait entre sobriété et originalité. Elle est conçue pour ceux qui n'ont pas peur d'être différents, mais qui le font avec style.",
+    highlights: [
+      "Design full black + détails uniques",
+      "Lacets corde épais en finition brute",
+      "Une sneaker custom audacieuse mais sobre",
+      "Confort Nike classique + style affirmé"
+    ]
   }
 ];
 

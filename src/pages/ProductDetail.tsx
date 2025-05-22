@@ -25,9 +25,9 @@ const ProductDetail = () => {
   // Multiple product images (using the same image for demo)
   const productImages = [
     product?.image,
-    product?.image,
-    product?.image,
-    product?.image
+    product?.image?.replace('.webp', '-side.webp'),
+    product?.image?.replace('.webp', '-back.webp'),
+    product?.image?.replace('.webp', '-top.webp')
   ];
   
   const handleAddToCart = () => {
@@ -105,6 +105,9 @@ const ProductDetail = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <h1 className="text-3xl md:text-4xl font-bold mb-2">{product.name}</h1>
+                {product.slogan && (
+                  <p className="text-xl text-gray-600 mb-4 italic">{product.slogan}</p>
+                )}
                 <p className="text-2xl font-semibold text-gold mb-6">{product.price.toFixed(2)} €</p>
                 
                 {/* Product Tags */}
@@ -120,15 +123,24 @@ const ProductDetail = () => {
                 {/* Product Description */}
                 <div className="prose prose-sm mb-8">
                   <p className="text-gray-700 mb-4">
-                    {product.isCustom 
-                      ? "Cette édition custom de la légendaire Nike Air Force 1 est dotée de lacets épais style corde qui donnent un look unique et différenciant. L'alliance parfaite entre le design iconique des AF1 et une touche d'originalité qui vous démarque."
-                      : "La Nike Air Force 1, une silhouette légendaire et intemporelle qui a traversé les générations tout en restant au sommet de la culture sneaker. Ce modèle standard offre le look classique et épuré qui a fait le succès mondial de cette chaussure iconique."
-                    }
-                  </p>
-                  <p className="text-gray-700">
-                    Confectionnée avec des matériaux premium, cette sneaker offre durabilité, confort et style pour toutes vos tenues urbaines.
+                    {product.description}
                   </p>
                 </div>
+                
+                {/* Product Highlights */}
+                {product.highlights && product.highlights.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="font-medium mb-3">Points forts</h3>
+                    <ul className="space-y-2">
+                      {product.highlights.map((highlight, index) => (
+                        <li key={index} className="flex items-start">
+                          <Check className="h-5 w-5 text-gold mr-2 flex-shrink-0 mt-0.5" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 
                 {/* Size Selection */}
                 <div className="mb-8">
