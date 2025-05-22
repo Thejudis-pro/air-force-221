@@ -9,16 +9,16 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, updateQuantity, clearCart, total } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, clearCart, subtotal } = useCart();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   
-  const handleRemoveItem = (index: number) => {
-    removeFromCart(index);
+  const handleRemoveItem = (productId: string, size: number) => {
+    removeFromCart(productId, size);
   };
   
-  const handleQuantityChange = (index: number, newQuantity: number) => {
+  const handleQuantityChange = (productId: string, size: number, newQuantity: number) => {
     if (newQuantity >= 1) {
-      updateQuantity(index, newQuantity);
+      updateQuantity(productId, size, newQuantity);
     }
   };
   
@@ -72,7 +72,7 @@ const Cart = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {cartItems.map((item, index) => (
+                      {cartItems.map((item) => (
                         <motion.tr 
                           key={`${item.product.id}-${item.size}`}
                           initial={{ opacity: 0, y: 20 }}
@@ -102,14 +102,14 @@ const Cart = () => {
                           <td className="text-center">
                             <div className="flex items-center justify-center">
                               <button 
-                                onClick={() => handleQuantityChange(index, item.quantity - 1)}
+                                onClick={() => handleQuantityChange(item.product.id, item.size, item.quantity - 1)}
                                 className="text-gray-500 hover:text-black"
                               >
                                 <MinusCircle size={18} />
                               </button>
                               <span className="mx-3 w-6 text-center">{item.quantity}</span>
                               <button 
-                                onClick={() => handleQuantityChange(index, item.quantity + 1)}
+                                onClick={() => handleQuantityChange(item.product.id, item.size, item.quantity + 1)}
                                 className="text-gray-500 hover:text-black"
                               >
                                 <PlusCircle size={18} />
@@ -121,7 +121,7 @@ const Cart = () => {
                           </td>
                           <td className="text-right">
                             <button 
-                              onClick={() => handleRemoveItem(index)}
+                              onClick={() => handleRemoveItem(item.product.id, item.size)}
                               className="text-gray-400 hover:text-red-500 transition-colors"
                             >
                               <X size={18} />
@@ -142,15 +142,15 @@ const Cart = () => {
                   <div className="space-y-3 mb-6">
                     <div className="flex justify-between text-gray-600">
                       <span>Sous-total</span>
-                      <span>{total.toFixed(2)} €</span>
+                      <span>{subtotal.toFixed(2)} €</span>
                     </div>
                     <div className="flex justify-between text-gray-600">
                       <span>Livraison</span>
-                      <span>{total >= 100 ? 'Gratuite' : '4.99 €'}</span>
+                      <span>{subtotal >= 100 ? 'Gratuite' : '4.99 €'}</span>
                     </div>
                     <div className="border-t pt-3 flex justify-between font-bold text-lg">
                       <span>Total</span>
-                      <span>{(total >= 100 ? total : total + 4.99).toFixed(2)} €</span>
+                      <span>{(subtotal >= 100 ? subtotal : subtotal + 4.99).toFixed(2)} €</span>
                     </div>
                   </div>
                   
