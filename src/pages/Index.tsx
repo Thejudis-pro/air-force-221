@@ -50,7 +50,7 @@ const Index = () => {
             delay: 0.3
           }} className="hidden md:flex justify-center items-center">
               <div className="relative flex justify-center items-center mt-12">
-                <img alt="Nike Air Force 1" src="/lovable-uploads/03983684-4b14-4dfb-a925-37a1aadb29e3.jpg" className="w-full max-h-[500px] transform rotate-[-15deg] translate-y-[60px] hover:rotate-[-5deg] transition-transform duration-500 \n" />
+                <img alt="Nike Air Force 1" src="/lovable-uploads/03983684-4b14-4dfb-a925-37a1aadb29e3.jpg" className="w-full max-h-[470px] transform rotate-[-15deg] translate-y-[60px] hover:rotate-[-5deg] transition-transform duration-500 \\n" />
               </div>
             </motion.div>
           </div>
