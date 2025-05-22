@@ -1,9 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
 const About = () => {
-  return (
-    <>
+  return <>
       <Header />
       
       {/* About Hero Section */}
@@ -37,11 +35,7 @@ const About = () => {
             
             <div className="relative">
               <div className="aspect-square overflow-hidden rounded-lg">
-                <img 
-                  src="/images/about-image-1.webp" 
-                  alt="Notre passion pour les sneakers" 
-                  className="w-full h-full object-cover"
-                />
+                <img alt="Notre passion pour les sneakers" src="/lovable-uploads/991e5442-3585-4851-8030-27fed977d106.jpg" className="w-full h-full object-scale-down" />
               </div>
               <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-gold/20 rounded-lg -z-10"></div>
               <div className="absolute -top-10 -right-10 w-48 h-48 bg-black/10 rounded-lg -z-10"></div>
@@ -51,11 +45,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-24">
             <div className="relative order-2 lg:order-1">
               <div className="aspect-square overflow-hidden rounded-lg">
-                <img 
-                  src="/images/about-image-2.webp" 
-                  alt="Notre approche" 
-                  className="w-full h-full object-cover"
-                />
+                <img alt="Notre approche" src="/lovable-uploads/65d450fc-eaa8-4274-a5bc-5a12f645d5d6.png" className="w-full h-full object-scale-down" />
               </div>
               <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-gold/20 rounded-lg -z-10"></div>
               <div className="absolute -top-10 -left-10 w-48 h-48 bg-black/10 rounded-lg -z-10"></div>
@@ -143,8 +133,6 @@ const About = () => {
       </section>
       
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default About;
