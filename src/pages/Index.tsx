@@ -15,16 +15,7 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/lovable-uploads/7ab42e81-b240-43c1-83bc-01e450db79b4.png" 
-            alt="Nike Air Force 1 Black Custom" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-        
+      <section className="relative h-screen flex items-center overflow-hidden bg-black">
         <div className="container-custom relative z-10 text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
