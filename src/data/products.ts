@@ -64,7 +64,13 @@ export const products: Product[] = [
     id: "af1-white-custom",
     name: "Air Force 1 – Blanche Custom Corde",
     price: 139.99,
-    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1974&auto=format&fit=crop",
+    image: "/lovable-uploads/b0bff359-55b6-4f31-8926-b9e75f7737e4.png",
+    productImages: [
+      "/lovable-uploads/b0bff359-55b6-4f31-8926-b9e75f7737e4.png", // Vue d'ensemble
+      "/lovable-uploads/1ebec985-75b1-4b30-98eb-7b6336ae597d.png", // Vue de dessus
+      "/lovable-uploads/9709b98f-a556-43ab-b2af-efbd6559d40b.png", // Vue de côté
+      "/lovable-uploads/f69247a6-21ff-4da8-a438-718e2efd824f.png", // Vue alternative
+    ],
     category: "custom",
     isCustom: true,
     slogan: "Même silhouette, nouvelle attitude.",
@@ -87,7 +93,13 @@ export const products: Product[] = [
     id: "af1-black-custom",
     name: "Air Force 1 – Noire Custom Corde",
     price: 139.99,
-    image: "https://images.unsplash.com/photo-1605408499391-6368c628ef42?q=80&w=1974&auto=format&fit=crop",
+    image: "/lovable-uploads/4c6e45ca-bfd7-46b6-b79e-323534514618.png",
+    productImages: [
+      "/lovable-uploads/4c6e45ca-bfd7-46b6-b79e-323534514618.png", // Vue d'ensemble
+      "/lovable-uploads/2292d18d-ba98-4d5c-b2b9-6e30b0327ca3.png", // Vue de côté
+      "/lovable-uploads/7e1ed525-f437-4931-af8c-4a798b75571c.png", // Vue alternative
+      "/lovable-uploads/f6b03a76-92af-4611-a8bd-99e249474756.png", // Vue de dessus
+    ],
     category: "custom",
     isCustom: true,
     slogan: "Le classique noir, revisité avec du caractère.",
