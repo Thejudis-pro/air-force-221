@@ -23,6 +23,9 @@ interface OrderData {
   total: number;
 }
 
+// Adresse email du propriétaire du site
+const OWNER_EMAIL = "judismetognon2@gmail.com";
+
 /**
  * Envoie un email de confirmation de commande au propriétaire du site
  * 
@@ -55,7 +58,7 @@ export const sendOrderConfirmationEmail = async (orderData: OrderData): Promise<
   // Pour le moment, nous simulons l'envoi d'email avec un délai
   return new Promise((resolve) => {
     console.log("Envoi d'email avec les données suivantes:", {
-      to: "proprietaire@boutique.com",
+      to: OWNER_EMAIL,
       subject: `Nouvelle commande reçue – n° ${orderData.orderNumber}`,
       body: formatEmailBody(orderData),
     });
