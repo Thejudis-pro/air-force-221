@@ -1,3 +1,4 @@
+
 // EmailJS implementation using the provided credentials
 
 import emailjs from '@emailjs/browser';
@@ -49,7 +50,8 @@ export const sendOrderConfirmationEmail = async (orderData: OrderData): Promise<
         customer_notes: orderData.customer.notes || "Aucune note",
         order_items: formatOrderItems(orderData.items),
         order_total: orderData.total.toFixed(2) + " €",
-        recipient: OWNER_EMAIL
+        // Make sure "to_email" matches EXACTLY the variable name expected in your EmailJS template
+        to_email: OWNER_EMAIL
       },
       EMAIL_PUBLIC_KEY
     );
