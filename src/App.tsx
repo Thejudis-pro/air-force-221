@@ -16,6 +16,7 @@ import DedicatedProductPage from "./pages/DedicatedProductPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
+import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,7 +26,7 @@ const App = () => (
     <TooltipProvider>
       <CartProvider>
         <Helmet>
-          <title>AirSneak | Sneakers Air Force 1 Classiques et Custom</title>
+          <title>AirForce 221 | Sneakers Air Force 1 Classiques et Custom</title>
           <meta name="description" content="Découvrez notre collection de sneakers Air Force 1 classiques et personnalisées. Livraison rapide, qualité premium." />
         </Helmet>
         <Toaster />
@@ -40,6 +41,8 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/panier" element={<Cart />} />
+              <Route path="/merci" element={<ThankYou />} />
+              <Route path="/commande-confirmee" element={<Navigate to="/merci" replace />} />
               
               {/* Routes de redirection SEO-friendly */}
               <Route path="/air-force-1-blanche" element={<Navigate to="/produits/air-force-1-blanche" replace />} />
