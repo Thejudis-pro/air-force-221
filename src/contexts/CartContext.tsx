@@ -1,5 +1,4 @@
-
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useContext, ReactNode } from 'react';
 import { toast } from "@/components/ui/sonner";
 
 // Types
@@ -10,6 +9,9 @@ export interface Product {
   image: string;
   category: string;
   isCustom: boolean;
+  slogan?: string;
+  description?: string;
+  highlights?: string[];
 }
 
 export interface CartItem {
@@ -28,17 +30,10 @@ interface CartContextType {
 }
 
 // Create context
-const CartContext = createContext<CartContextType>({
-  cartItems: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
-  updateQuantity: () => {},
-  clearCart: () => {},
-  cartTotal: 0
-});
+export const CartContext = createContext<CartContextType | undefined>(undefined);
 
 // Provider component
-export const CartProvider = ({ children }: { children: React.ReactNode }) => {
+export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [cartTotal, setCartTotal] = useState(0);
 
