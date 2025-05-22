@@ -1,10 +1,8 @@
-
 import { useState, FormEvent } from 'react';
 import { Instagram, Twitter, Phone } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { toast } from "@/components/ui/sonner";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,21 +10,23 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const {
+      name,
+      value
+    } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
-  
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
     toast.success("Message envoyé avec succès!");
     setFormData({
       name: '',
@@ -36,9 +36,7 @@ const Contact = () => {
     });
     setIsSubmitting(false);
   };
-  
-  return (
-    <>
+  return <>
       <Header />
       
       {/* Contact Hero Section */}
@@ -64,46 +62,21 @@ const Contact = () => {
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Nom complet
                   </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                    placeholder="Votre nom"
-                  />
+                  <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" placeholder="Votre nom" />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                     Email
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                    placeholder="votre@email.com"
-                  />
+                  <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" placeholder="votre@email.com" />
                 </div>
                 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                     Sujet
                   </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                  >
+                  <select id="subject" name="subject" required value={formData.subject} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent">
                     <option value="">Sélectionnez un sujet</option>
                     <option value="question">Question sur un produit</option>
                     <option value="order">Suivi de commande</option>
@@ -116,23 +89,10 @@ const Contact = () => {
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Message
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                    placeholder="Votre message..."
-                  />
+                  <textarea id="message" name="message" required rows={6} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent" placeholder="Votre message..." />
                 </div>
                 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`btn btn-primary px-6 py-3 w-full ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
-                >
+                <button type="submit" disabled={isSubmitting} className={`btn btn-primary px-6 py-3 w-full ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}>
                   {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
                 </button>
               </form>
@@ -157,7 +117,7 @@ const Contact = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gold mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    <span>+33 6 12 34 56 78</span>
+                    <span>+221 12 123 12 12</span>
                   </p>
                   
                   <p className="flex items-start">
@@ -176,32 +136,17 @@ const Contact = () => {
                 <h3 className="text-lg font-semibold mb-4">Suivez-nous</h3>
                 
                 <div className="space-y-4">
-                  <a 
-                    href="https://instagram.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center p-3 bg-white rounded-md hover:bg-gold hover:text-white transition-colors"
-                  >
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center p-3 bg-white rounded-md hover:bg-gold hover:text-white transition-colors">
                     <Instagram className="h-6 w-6 mr-3" />
                     <span className="font-medium">Instagram</span>
                   </a>
                   
-                  <a 
-                    href="https://twitter.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center p-3 bg-white rounded-md hover:bg-gold hover:text-white transition-colors"
-                  >
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex items-center p-3 bg-white rounded-md hover:bg-gold hover:text-white transition-colors">
                     <Twitter className="h-6 w-6 mr-3" />
                     <span className="font-medium">Twitter</span>
                   </a>
                   
-                  <a 
-                    href="https://wa.me/33612345678" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center p-3 bg-white rounded-md hover:bg-green-500 hover:text-white transition-colors"
-                  >
+                  <a href="https://wa.me/33612345678" target="_blank" rel="noopener noreferrer" className="flex items-center p-3 bg-white rounded-md hover:bg-green-500 hover:text-white transition-colors">
                     <Phone className="h-6 w-6 mr-3" />
                     <span className="font-medium">WhatsApp</span>
                   </a>
@@ -220,16 +165,12 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-lg font-semibold mb-3">Comment suivre ma commande ?</h3>
-              <p className="text-gray-600">
-                Vous recevrez un email de confirmation avec un numéro de suivi une fois votre colis expédié. Vous pouvez également consulter l'état de votre commande dans votre espace client.
-              </p>
+              <p className="text-gray-600">Vous recevrez un email de confirmation avec un numéro de suivi une fois votre colis expédié. </p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <h3 className="text-lg font-semibold mb-3">Quels sont les délais de livraison ?</h3>
-              <p className="text-gray-600">
-                Nous expédions toutes les commandes sous 24h (jours ouvrés). Le délai de livraison est généralement de 2-3 jours ouvrés en France métropolitaine.
-              </p>
+              <p className="text-gray-600">Nous expédions toutes les commandes sous 24h (jours ouvrés). </p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -250,8 +191,6 @@ const Contact = () => {
       </section>
       
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default Contact;
